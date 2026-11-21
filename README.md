@@ -37,6 +37,54 @@ El objetivo de este proyecto es analizar el desempeño comercial y el comportami
 - Monitorear la rentabilidad de los productos considerando tanto los ingresos como sus costos e inversión en marketing.
 - No atribuir mejoras al nuevo checkout sin evidencia estadística suficiente; se recomienda continuar evaluando su desempeño.
 
+## Diccionario de datos
+
+El proyecto utiliza tres datasets principales para el análisis comercial y financiero:
+
+### 1. Orders (Pedidos)
+
+Contiene información de las órdenes realizadas por los usuarios durante el periodo analizado.
+
+- `id_pedido`: identificador único del pedido.
+- `id_usuario`: identificador del usuario que realizó la compra.
+- `fecha_hora_pedido`: fecha del pedido.
+- `pais`: país desde donde se realizó la compra.
+- `dispositivo`: dispositivo utilizado por el usuario.
+- `fuente_referencia`: canal o fuente de adquisición del usuario.
+- `nombre_producto`: nombre del producto comprado.
+- `categoria_producto`: categoría a la que pertenece el producto.
+- `cantidad`: unidades compradas.
+- `precio_unitario`: precio por unidad del producto.
+- `monto_descuento`: descuento aplicado al pedido.
+- `monto_total`: importe total del pedido.
+
+### 2. Catalog (Catálogo de productos)
+
+Contiene información de los productos y sus costos unitarios.
+
+- `nombre_producto`: nombre del producto.
+- `categoria_producto`: categoría del producto.
+- `costo_unitario`: costo de adquisición por unidad.
+- `proveedor`: proveedor del producto.
+
+### 3. Marketing (Inversión en marketing)
+
+Contiene los registros de inversión publicitaria por fecha, país y campaña.
+
+- `fecha`: fecha del registro de inversión.
+- `pais`: país al que corresponde la inversión.
+- `id_campaña`: identificador de la campaña publicitaria.
+- `canal`: canal de marketing asociado a la campaña.
+- `gasto`: importe invertido en marketing.
+
+### 4. Tablas de PostgreSQL
+
+Para los análisis de conversión y retención también se consultaron tablas alojadas en PostgreSQL:
+
+- `events`: registros de eventos realizados por los usuarios. Se utilizaron los campos `id_usuario` y `nombre_evento` para construir el funnel de conversión.
+- `users`: información de registro de usuarios. Se utilizaron `id_usuario` y `fecha_registro` para construir las cohortes.
+- `user_activity`: registros de actividad de los usuarios. Se utilizaron `id_usuario`, `dias_despues_registro` y `activo` para calcular la retención.
+
 ## Estructura del repositorio
 
 - `RappiPlus_Portafolio_Organizado_Seguro.ipynb`: notebook con el desarrollo del análisis.
