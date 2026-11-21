@@ -114,5 +114,5 @@ Contiene información utilizada para medir la actividad y retención.
 ## Estructura del repositorio
 
 - `RappiPlus_Portafolio_Organizado_Seguro.ipynb`: notebook con el desarrollo del análisis.
-- `dashboard/`: archivo Power BI del proyecto.
-- `images/`: recursos gráficos utilizados en el portafolio.
+- `dashboard/RappiPlus.pbix`: archivo del dashboard desarrollado en Power BI.
+- `images/`: capturas y recursos gráficos del proyecto.
