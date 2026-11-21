@@ -39,51 +39,77 @@ El objetivo de este proyecto es analizar el desempeño comercial y el comportami
 
 ## Diccionario de datos
 
-El proyecto utiliza tres datasets principales para el análisis comercial y financiero:
+El proyecto utiliza tres datasets principales y tres tablas de PostgreSQL para analizar el desempeño comercial y el comportamiento de los usuarios.
 
 ### 1. Orders (Pedidos)
 
-Contiene información de las órdenes realizadas por los usuarios durante el periodo analizado.
+Contiene información de las órdenes realizadas por los usuarios.
 
 - `id_pedido`: identificador único del pedido.
-- `id_usuario`: identificador del usuario que realizó la compra.
-- `fecha_hora_pedido`: fecha del pedido.
+- `id_usuario`: identificador del usuario.
+- `fecha_hora_pedido`: fecha y hora del pedido.
 - `pais`: país desde donde se realizó la compra.
-- `dispositivo`: dispositivo utilizado por el usuario.
-- `fuente_referencia`: canal o fuente de adquisición del usuario.
+- `dispositivo`: dispositivo utilizado.
+- `fuente_referencia`: canal de adquisición.
 - `nombre_producto`: nombre del producto comprado.
-- `categoria_producto`: categoría a la que pertenece el producto.
+- `categoria_producto`: categoría del producto.
 - `cantidad`: unidades compradas.
-- `precio_unitario`: precio por unidad del producto.
-- `monto_descuento`: descuento aplicado al pedido.
+- `precio_unitario`: precio por unidad.
+- `monto_descuento`: descuento aplicado.
 - `monto_total`: importe total del pedido.
 
 ### 2. Catalog (Catálogo de productos)
 
-Contiene información de los productos y sus costos unitarios.
+Contiene información de los productos y sus costos.
 
 - `nombre_producto`: nombre del producto.
 - `categoria_producto`: categoría del producto.
-- `costo_unitario`: costo de adquisición por unidad.
+- `costo_unitario`: costo por unidad.
 - `proveedor`: proveedor del producto.
 
 ### 3. Marketing (Inversión en marketing)
 
-Contiene los registros de inversión publicitaria por fecha, país y campaña.
+Contiene los registros de inversión publicitaria.
 
-- `fecha`: fecha del registro de inversión.
-- `pais`: país al que corresponde la inversión.
-- `id_campaña`: identificador de la campaña publicitaria.
-- `canal`: canal de marketing asociado a la campaña.
-- `gasto`: importe invertido en marketing.
+- `fecha`: fecha del registro.
+- `pais`: país asociado a la inversión.
+- `id_campaña`: identificador de la campaña.
+- `canal`: canal de marketing.
+- `gasto`: importe invertido.
 
 ### 4. Tablas de PostgreSQL
 
-Para los análisis de conversión y retención también se consultaron tablas alojadas en PostgreSQL:
+**`events` – Eventos de usuarios**
 
-- `events`: registros de eventos realizados por los usuarios. Se utilizaron los campos `id_usuario` y `nombre_evento` para construir el funnel de conversión.
-- `users`: información de registro de usuarios. Se utilizaron `id_usuario` y `fecha_registro` para construir las cohortes.
-- `user_activity`: registros de actividad de los usuarios. Se utilizaron `id_usuario`, `dias_despues_registro` y `activo` para calcular la retención.
+Registra las interacciones de los usuarios con la plataforma.
+
+- `id_usuario`: identificador del usuario.
+- `id_sesion`: identificador de la sesión.
+- `nombre_evento`: tipo de evento realizado.
+- `timestamp_evento`: fecha y hora del evento.
+- `pais`: país del usuario.
+- `dispositivo`: dispositivo utilizado.
+- `fuente_referencia`: fuente de adquisición.
+- `categoria_producto`: categoría del producto asociado al evento.
+
+**`users` – Información de usuarios**
+
+Contiene información de registro y características de los usuarios.
+
+- `id_usuario`: identificador del usuario.
+- `fecha_registro`: fecha de registro.
+- `país`: país del usuario.
+- `dispositivo`: dispositivo utilizado.
+- `tipo_plan`: tipo de plan del usuario.
+
+**`user_activity` – Actividad de usuarios**
+
+Contiene información utilizada para medir la actividad y retención.
+
+- `id_usuario`: identificador del usuario.
+- `fecha_actividad`: fecha de actividad.
+- `dias_despues_registro`: días transcurridos desde el registro.
+- `activo`: indicador de actividad del usuario.
 
 ## Estructura del repositorio
 
